@@ -1,0 +1,48 @@
+[user]
+	name = Nina Lum
+	email = ninalum@oath.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+        s = status
+        cp = cherry-pick
+	unstage = reset HEAD --
+        sup = submodule update --init
+        # Checkout branch and update submodules
+        checkoutall = "!f(){ git checkout $@ && git submodule update --init --recursive; }; f"
+        coa = "!f(){ git checkout $@ && git submodule update --init --recursive; }; f"
+        coall = "!f(){ git checkout $@ && git submodule update --init --recursive; }; f"
+        # Pull remote into current branch and update submodules
+        pullall = "!f(){ git pull $@ && git submodule update --init --recursive; }; f"
+        # Push local changes to remote, only if submodules are already pushed to remote
+        pushsafe = "!f(){ git push --recurse-submodules=check $@; }; f"
+        pushall = "!f(){ git push --recurse-submodules=on-demand $@; }; f"
+        pretty-log = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+[hub]
+	host = git.ouroath.com
+	host = git.ouroath.com
+	host = git.ouroath.com
+	host = git@git.corp.yahoo.com
+	host = git.ouroath.com
+	host = git.ouroath.com
+	protocol = ssh
+	token = f763425246aabe0e65168466fae73e2df75af4ad
+[push]
+	default = current
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+[merge]
+	tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
+[github]
+	token = f763425246aabe0e65168466fae73e2df75af4ad
